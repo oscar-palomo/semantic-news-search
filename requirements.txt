@@ -1,0 +1,9 @@
+# Everything needed to run the notebook and scripts.
+# For development: pip install -e ".[ml,dev]"
+numpy
+pandas
+scikit-learn
+matplotlib
+sentence-transformers
+umap-learn
+datasets

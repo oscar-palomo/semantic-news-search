@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "semantic-news-search"
+version = "0.1.0"
+description = "Semantic search and unsupervised clustering of news headlines with sentence embeddings."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Oscar" }]
+keywords = ["nlp", "embeddings", "semantic-search", "clustering", "sentence-transformers"]
+dependencies = [
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "matplotlib",
+]
+
+[project.optional-dependencies]
+# Heavy dependencies needed to run the real pipeline (not needed for the test suite).
+ml = [
+    "sentence-transformers",
+    "umap-learn",
+    "datasets",
+]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests", "scripts"]
+# The notebook is an exploratory walkthrough; keep its code as originally written.
+extend-exclude = ["*.ipynb"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
